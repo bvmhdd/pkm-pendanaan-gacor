@@ -3,6 +3,7 @@
 ## Identitas
 - **Judul kerja:** [ISI]
 - **Skema PKM:** PKM-KC (Karsa Cipta)
+- **Bidang Keilmuan:** Teknik Elektro / Teknik Telekomunikasi & Computer Science
 - **Tahun/periode:** 2027
 - **Tenggat internal / resmi:** Seleksi Internal Fakultas / Kampus Daerah (Menuju PKM 2027 Nasional)
 

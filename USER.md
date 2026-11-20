@@ -2,7 +2,7 @@
 
 - *Nama panggilan:* Ibin, Radit, Hamzah
 - *Status:* Mahasiswa, Indonesia
-- *Bidang minat/riset:* jaringan komputer · AI/ML · keamanan siber · sistem multimedia
+- *Bidang minat/riset:* teknik elektro · instrumentasi & sensor · elektronika daya / BMS · jaringan komputer · AI/ML · telekomunikasi & RF
 - *Tujuan jangka panjang:* publikasi di jurnal internasional
 - *Skema PKM yang dibidik:* PKM KC
 - *Anggota tim & peran:* Muhammad Muhibbin (Ketua Tim), Sahra Raditiya Fadillah (Anggota Tim), Syahbudin Hamzah Hasan (Anggota Tim)

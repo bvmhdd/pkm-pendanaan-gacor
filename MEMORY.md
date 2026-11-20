@@ -12,6 +12,7 @@
 - Tim terdiri dari 3 mahasiswa: Muhammad Muhibbin (Ketua Tim), Sahra Raditiya Fadillah (Anggota Tim), Syahbudin Hamzah Hasan (Anggota Tim).
 - Dosen Pendamping: Endah Setyowati S.T., M.T.
 - Skema terdaftar: PKM-KC (Karsa Cipta) untuk persiapan siklus PKM 2027.
+- Bidang fokus integrasi: Teknik Elektro (Instrumentasi Sensor, Power Electronics/BMS, Sirkuit Elektronika), Computer Science (AI/TinyML, Rekayasa Perangkat Lunak), dan Teknik Telekomunikasi (Jaringan & RF). Teori fisika elektromagnetik & propagasi gelombang digunakan murni sebagai dasar referensi teknis rekayasa sistem.
 - Tahap saat ini: Penyiapan seleksi awal tingkat fakultas / kampus daerah sebelum eskalasi ke universitas dan nasional.
 - Basis acuan: Menggunakan Pedoman PKM 2026 sebagai standar baku mutu dan format sementara hingga pedoman resmi 2027 terbit.
 

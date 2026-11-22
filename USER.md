@@ -4,8 +4,10 @@
 | Nama | Peran | Kompetensi Utama |
 |---|---|---|
 | Muhammad Muhibbin (Ibin) | Ketua Tim | Hardware design, PCB layout, RF/analog, project lead |
-| Sahra Raditiya Fadillah (Radit) | Anggota | [ISI — misal: firmware embedded, TinyML, Python] |
-| Syahbudin Hamzah Hasan (Hamzah) | Anggota | [ISI — misal: telekomunikasi, dokumentasi, testing] |
+| Sahra Raditiya Fadillah (Radit) | Anggota | [firmware embedded, TinyML, Python] |
+| Syahbudin Hamzah Hasan (Hamzah) | Anggota | [telekomunikasi, dokumentasi, testing] |
+Abyan Fauzan | Anggota | 
+Rafly |
 
 - **Dosen Pendamping:** Endah Setyowati, S.T., M.T.
 - **Status:** Mahasiswa aktif S-1, Indonesia

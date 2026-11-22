@@ -16,6 +16,7 @@ def generate_bundle():
         "00-project/PITCH-DECK.md",
         "10-pedoman/CHECKLIST-PEDOMAN.md",
         "20-literatur/EVIDENCE-LEDGER.md",
+        "20-literatur/references/README.md",
         "30-riset/CLAIM-MATRIX.md",
         "30-riset/EXPERIMENT-LOG.md",
         "40-naskah/OUTLINE.md",

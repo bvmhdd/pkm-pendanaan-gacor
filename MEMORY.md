@@ -14,8 +14,13 @@
 | 2026-11-23 | Finalisasi Naskah Proposal & Restrukturisasi Lampiran Standalone | Menggantikan 12 gambar screenshot tabel di naskah lama dengan tabel native Word, memecah 5 modul lampiran terpisah (.docx), menyusun naskah inti berstandar PIMNAS (TNR 12, 1.15 spasi, Justify, field XML TOC otomatis, sitasi Harvard 40 paper primer terindeks DOI), serta mengunci anggaran murni Belmawa Rp 7.850.000 tanpa dana pendamping PT/mitra | Terbitnya berkas bersih Proposal-Utama-LITHOSCAN-PKM-KC-2026.docx dan 5 berkas lampiran mandiri berformat tabel baku Word siap cetak/unggah |
 
 ## Fakta terverifikasi tentang proyek
-- Tim terdiri dari 3 mahasiswa: Muhammad Muhibbin (Ketua Tim), Sahra Raditiya Fadillah (Anggota Tim), Syahbudin Hamzah Hasan (Anggota Tim) - Seluruhnya dari Prodi S1 Sistem Telekomunikasi UPI Kampus Purwakarta.
-- Pembagian peran multidisiplin: Ketua (Optoelektronika & Instrumentasi Sensor / Hardware AFE), Anggota 1 (Embedded TinyML & Computer Science pada ESP32-S3), Anggota 2 (Telemetri IoT, BLE/MQTT, Validasi Lab Spektrofotometri & Urin Sintetis).
+- Tim terdiri dari 5 mahasiswa: Muhammad Muhibbin (Ketua Tim), Sahra Raditiya Fadillah (Anggota 1), Syahbudin Hamzah Hasan (Anggota 2), Anggota 3 (Termomekatronika & 3D Enclosure), dan Anggota 4 (Urin Sintetis ASTM & Validasi Lab) - Seluruhnya dari Prodi S1 Sistem Telekomunikasi UPI Kampus Purwakarta.
+- Pembagian peran multidisiplin:
+  1. Ketua: Optoelektronika & Instrumentasi Sensor / Hardware AFE OPA388.
+  2. Anggota 1: Embedded TinyML & Computer Science pada ESP32-S3 (1D-CNN INT8).
+  3. Anggota 2: Telemetri IoT Medis, BLE 5.0, GATT, & Mobile Android App.
+  4. Anggota 3: Termomekatronika, Desain 3D CAD Enclosure PETG, & Closed-Loop PID Chamber 37°C.
+  5. Anggota 4: Instrumentasi Kimia Analitik, Formulasi Urin Sintetis ASTM, Validasi Benchtop UV-Vis, & Diseminasi.
 - Dosen Pendamping: Endah Setyowati S.T., M.T. (NIP 920200819870110201 / NIDN 0010018704).
 - Anggaran: 100% didanai Belmawa sebesar Rp 7.850.000 (tidak ada dana pendamping perguruan tinggi maupun pihak ketiga/mitra). Tidak ada komponen alat/bahan satuan melebihi Rp 1.000.000.
 - Skema terdaftar: PKM-KC (Karsa Cipta) untuk persiapan siklus PKM 2027.

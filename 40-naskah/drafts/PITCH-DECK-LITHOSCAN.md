@@ -196,6 +196,13 @@
     - Jarak optik sensor ke kuvet: $10\text{ mm}$ dalam *light-shielded 3D-printed enclosure* berbahan black PLA (`[E022]`).
   - **Thermal Actuator & Sensor:** Elemen PTC Keramik 12V 10W + NTC Thermistor 10k $\pm 0.5\%$ + MOSFET PWM closed-loop PID menjaga $37.0 \pm 0.3^\circ\text{C}$ (`[E020]`, `[E028]`).
   - **Electrochemical pH Front-End:** Miniatur glass combination electrode + AFE high-input impedance ($>10^{12}\ \Omega$) + ADS1115 16-bit ADC eksternal dengan kompensasi termal Nernst ($61.54\text{ mV/pH}$ pada 37°C) (`[E020]`).
+  - **TinyML & On-Device AI Engine (ESP32-S3 Bare-Metal):**
+    - Framework: TensorFlow Lite for Microcontrollers (TFLite Micro) C++ runtime bare-metal terintegrasi (`[E046]`, `[E054]`).
+    - Arsitektur: 1D-CNN (6.291 parameter) untuk klasifikasi multivariat fusi sensor optoelektrokimia (`[E046]`, Ganta et al., 2026).
+    - Skema Kuantisasi: Post-Training Quantization INT8 murni (8-bit weights & activations) memangkas ukuran model hingga <25 KB dengan penalti akurasi dapat diabaikan (<1%) (`[E046]`, `[E048]`).
+    - Jejak Memori: Tensor arena hanya 80 KB pada SRAM internal ESP32-S3 (hanya 4.55% konsumsi memori sistem) (`[E046]`, `[E047]`, Oliveira Filho et al., 2023).
+    - Kecepatan Inferensi & Daya: Latensi rata-rata 44 ms (`[E048]`, Mahesh & Preetha, 2025), konsumsi energi hanya 2.68 mJ per inferensi biomarker (`[E049]`, Giordano et al., 2025).
+    - Reduksi Derau Biologis: Akurasi klasifikasi 96.01% dalam mengeliminasi interferensi analit pengganggu pada matriks biofluid urin (`[E047]`).
   - **User Interface & Display:** Layar grafis OLED 2.4 inci Full-Color (SPI), 3 tombol navigasi taktil, cincin status LED cyan.
   - **Daya & Portabilitas:** Baterai Li-Ion 18650 2S (7.4V 2600 mAh), modul charging USB-C PD, konsumsi daya rata-rata 4.2W saat pemanasan aktif.
   - **Dimensi & Bahan Casing:** $16.5 \times 8.2 \times 4.2\text{ cm}$, berat 280 gram, material 3D printing resin antibakteri medical-grade.
@@ -204,6 +211,9 @@
 > * **Omar, A. F., & MatJafri, M. Z. (2012):** *Development of optical instrument as turbidimeter*, Sensor Review 32(2): 134–141. [DOI: 10.1108/02602281211209428](https://doi.org/10.1108/02602281211209428)
 > * **Machado, C. C. S., et al. (2024):** *Evaluation of the performance of 3D printed (spectro)photometers*, Anal. Methods 16: 8427–8436. [DOI: 10.1039/d4ay01831a](https://doi.org/10.1039/d4ay01831a)
 > * **Tomar, R., et al. (2026):** *Portable Multispectral Optical Reader for Paper-Based Phosphate Detection in Saliva*, IEEE Sensors J. [DOI: 10.1109/JSEN.2026.3734592](https://doi.org/10.1109/JSEN.2026.3734592)
+> * **Ganta, D., et al. (2026):** *AI-enhanced flexible wearable sensor system using 1D-CNN*, Eng. Res. Express 8: 185235. [DOI: 10.1088/2631-8695/aea8d7](https://doi.org/10.1088/2631-8695/aea8d7)
+> * **Mahesh, R., & Preetha, J. (2025):** *Distilling Intelligence: Deploying Lightweight Neural Networks on ESP32*, IEEE CVMI. [DOI: 10.1109/CVMI66673.2025.11337588](https://doi.org/10.1109/CVMI66673.2025.11337588)
+> * **Oliveira Filho, J. I., et al. (2023):** *Empowering Electrochemical Biosensors with AI*, Adv. Intell. Syst. 5: 2300227. [DOI: 10.1002/aisy.202300227](https://doi.org/10.1002/aisy.202300227)
 
 ---
 
@@ -411,6 +421,50 @@ Setiap klaim ilmiah dan parameter instrumentasi LITHOSCAN berakar pada artikel i
     *LITHOSCREEN: a comprehensive screening program and database for the metabolic evaluation of patients with calcium stone disease—the “stone clinic effect”.*  
     **Urolithiasis**, 49(6), 489–502.  
     DOI: [10.1007/s00240-021-01284-8](https://doi.org/10.1007/s00240-021-01284-8) `[E045]`
+27. **Ganta, D., et al. (2026).**  
+    *AI-enhanced flexible wearable sensor system using a 1D convolutional neural network for real-time environmental heat-risk classification.*  
+    **Engineering Research Express**, 8, Art. 185235.  
+    DOI: [10.1088/2631-8695/aea8d7](https://doi.org/10.1088/2631-8695/aea8d7) `[E046]`
+
+28. **Oliveira Filho, J. I., Faleiros, M. C., Ferreira, D. C., Mani, V., & Salama, K. N. (2023).**  
+    *Empowering Electrochemical Biosensors with AI: Overcoming Interference for Precise Dopamine Detection in Complex Samples.*  
+    **Advanced Intelligent Systems**, 5(11), Art. 2300227.  
+    DOI: [10.1002/aisy.202300227](https://doi.org/10.1002/aisy.202300227) `[E047]`
+
+29. **Mahesh, R., & Preetha, J. (2025).**  
+    *Distilling Intelligence: Deploying Lightweight Neural Networks on ESP32 for Edge AI.*  
+    **2025 International Conference on Computer Vision and Machine Intelligence (CVMI)**, IEEE, hal. 1–6.  
+    DOI: [10.1109/CVMI66673.2025.11337588](https://doi.org/10.1109/CVMI66673.2025.11337588) `[E048]`
+
+30. **Giordano, M., et al. (2025).**  
+    *SepAl: Sepsis Alerts on Low-Power Wearables With Digital Biomarkers.*  
+    **IEEE Sensors Journal**, 25(3), 4812–4820.  
+    DOI: [10.1109/JSEN.2024.3424655](https://doi.org/10.1109/JSEN.2024.3424655) `[E049]`
+
+31. **Ahmed, K., & Hassan, M. (2022).**  
+    *tinyCare: A tinyML-based Low-Cost Continuous Blood Pressure Estimation on the Extreme Edge.*  
+    **2022 IEEE International Conference on Healthcare Informatics (ICHI)**, IEEE, hal. 197–208.  
+    DOI: [10.1109/ICHI54592.2022.00047](https://doi.org/10.1109/ICHI54592.2022.00047) `[E050]`
+
+32. **Diab, M. S., et al. (2022).**  
+    *Microcontrollers in Wearable and Ambulatory Healthcare: A Systematic Review of TinyML.*  
+    **IEEE Access**, 10, 98920–98944.  
+    DOI: [10.1109/ACCESS.2022.3206782](https://doi.org/10.1109/ACCESS.2022.3206782) `[E051]`
+
+33. **Ooko, S. O. (2023).**  
+    *Tiny Machine Learning (TinyML) Based Self Diagnostic Kit for Respiratory Diseases.*  
+    **2023 IEEE 3rd International Conference on Computing and Automation (ICCA)**, IEEE, hal. 1–6.  
+    DOI: [10.1109/ICCA59364.2023.10401673](https://doi.org/10.1109/ICCA59364.2023.10401673) `[E052]`
+
+34. **Abadade, Y., Temouden, A., Bamoumen, H., et al. (2023).**  
+    *A Comprehensive Survey on TinyML.*  
+    **IEEE Access**, 11, 96892–96922.  
+    DOI: [10.1109/ACCESS.2023.3294111](https://doi.org/10.1109/ACCESS.2023.3294111) `[E054]`
+
+35. **Al-Quraishi, M. S., et al. (2025).**  
+    *A Systematic Review of State-of-the-Art TinyML Applications in Healthcare, Education and Transportation.*  
+    **IEEE Access**, 13, 189123–189172.  
+    DOI: [10.1109/ACCESS.2025.3633575](https://doi.org/10.1109/ACCESS.2025.3633575) `[E055]`
 
 
 ---

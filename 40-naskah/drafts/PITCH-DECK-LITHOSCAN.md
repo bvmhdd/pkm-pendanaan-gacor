@@ -465,6 +465,30 @@ Setiap klaim ilmiah dan parameter instrumentasi LITHOSCAN berakar pada artikel i
     *A Systematic Review of State-of-the-Art TinyML Applications in Healthcare, Education and Transportation.*  
     **IEEE Access**, 13, 189123–189172.  
     DOI: [10.1109/ACCESS.2025.3633575](https://doi.org/10.1109/ACCESS.2025.3633575) `[E055]`
+36. **Porowski, T., Zoch-Zwierz, W., Konstantynowicz, J., & Taranta-Janusz, K. (2008).**  
+    *A new approach to the diagnosis of children’s urolithiasis based on the Bonn Risk Index.*  
+    **Pediatric Nephrology**, 23(7), 1123–1128.  
+    DOI: [10.1007/s00467-008-0786-1](https://doi.org/10.1007/s00467-008-0786-1) `[E056]`
+
+37. **Murayama, T., Sakai, N., Yamada, T., & Takano, T. (2001).**  
+    *Role of the diurnal variation of urinary pH and urinary calcium in urolithiasis: A study in outpatients.*  
+    **International Journal of Urology**, 8(10), 525–532.  
+    DOI: [10.1046/j.1442-2042.2001.00373.x](https://doi.org/10.1046/j.1442-2042.2001.00373.x) `[E057]`
+
+38. **Berg, W., Bechler, R., Haas, C., & Laube, N. (2009).**  
+    *Relevance of the BONN Risk Index for metabolic monitoring of patients with calcium oxalate urolithiasis: a clinical application study of the Urolizer®.*  
+    **Urological Research**, 37(1), 55–62.  
+    DOI: [10.1007/s00240-009-0178-4](https://doi.org/10.1007/s00240-009-0178-4) `[E058]`
+
+39. **Sakhaee, K., Nicar, M., Hill, K., & Pak, C. Y. C. (1983).**  
+    *Contrasting effects of potassium citrate and sodium citrate therapies on urinary chemistries and crystallization of stone-forming salts.*  
+    **Kidney International**, 24(3), 348–352.  
+    DOI: [10.1038/ki.1983.168](https://doi.org/10.1038/ki.1983.168) `[E059]`
+
+40. **Fogazzi, G. B. (1996).**  
+    *Crystalluria: a neglected aspect of urinary sediment analysis.*  
+    **Nephrology Dialysis Transplantation**, 11(2), 379–387.  
+    DOI: [10.1093/oxfordjournals.ndt.a027274](https://doi.org/10.1093/oxfordjournals.ndt.a027274) `[E060]`
 
 
 ---

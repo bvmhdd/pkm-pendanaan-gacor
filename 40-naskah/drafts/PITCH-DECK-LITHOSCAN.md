@@ -83,14 +83,16 @@
 - **Headline:** **Arsitektur Tiga Tingkat: Fisika Optik, Bio-Termodinamika, & Elektrokimia**
 - **Bagaimana LITHOSCAN Bekerja Secara Ilmiah?**
   1. **Sensor Optik 1 — Nefelometri 90° 850 nm (Standar ISO 7027-1:2016):**
-     * Laser inframerah dekat ($\lambda = 850\text{ nm}$) ditembakkan melintasi kuvet polistiren sekali pakai.
+     * **Arsitektur Deteksi Teruji:** Mengadopsi konfigurasi instrumentasi optik terstandarisasi ISO 7027 (`[E031]`, Omar & MatJafri, 2012): Emitter LED NIR 850/880 nm terkolimasi dipadukan dengan fotodioda silikon PIN BPW34 (area aktif $7.5\text{ mm}^2$, sensitivitas $0.62\text{ A/W}$ pada 850 nm) dan penguat transimpedansi sensitivitas tinggi ($10^7\text{ V/A}$).
+     * **Akurasi & Presisi Tinggi:** Menghasilkan respon linear luar biasa ($R^2 = 0.995$, $y = 11.984x + 796.17$) dengan standar error estimasi hanya $1.809\text{ NTU}$ pada rentang 0–100 NTU. Teknik *oversampling & averaging* 250 pembacaan ADC meredam fluktuasi sinyal hingga stabilitas $\pm 2$ hitungan ADC pada 1 NTU (`[E031]`).
      * Partikel kristal kalsium oksalat monohidrat (ukuran 5–15 $\mu\text{m}$) memicu **Mie Scattering**. Fotodioda pada sudut 90° menangkap intensitas hamburan partikel padat ($I_{90^\circ}$).
-     * Mengapa 850 nm? Pigmen urin (urokrom/bilirubin) memiliki koefisien serapan nol ($\epsilon \approx 0$) pada spektrum NIR, menjamin sinyal bebas bias warna urin pekat (`[E019]`).
-  2. **Sensor Optik 2 — Spektrometer Multi-Kanal ams AS7341:**
+     * Mengapa 850 nm? Pigmen urin (urokrom/bilirubin) memiliki koefisien serapan nol ($\epsilon \approx 0$) pada spektrum NIR, menjamin sinyal bebas bias warna urin pekat (`[E019]`, `[E031]`).
+  2. **Sensor Optik 2 — Spektrometer Multi-Kanal ams AS7341 & Kinetika Fotometri 37.0°C:**
      * Menggunakan filter nano-optik CMOS 11 kanal (F1: 415 nm, F2: 445 nm, F3: 480 nm, F4: 515 nm, F5: 555 nm, F6: 590 nm, F7: 630 nm, F8: 680 nm, NIR, Clear) dengan ADC 16-bit terintegrasi (`[E021]`, `[E023]`).
      * **Formula Absorbansi Terkalibrasi:** Dihitung langsung dari intensitas digital:
        $$A = \log_{10} \left( \frac{I_0 - I_d}{I_s - I_d} \right)$$
        di mana $I_0$ adalah intensitas emisi LED referensi, $I_d$ adalah sinyal gelap (*dark count*), dan $I_s$ adalah intensitas transmisi sampel urin (`[E021]`, Tonelli et al., 2025).
+     * **Linearitas Kinetika CaOx pada 37.0°C:** Pengukuran fotometri turbiditas CaOx pada suhu tubuh 37°C dan pH 5.7 terbukti berkorelasi linear kuat dengan konsentrasi kristal ($R^2 = 0.9757$), serta mampu memisahkan fase nukleasi awal (0–6 menit) dan puncak agregasi maksimum (18 menit) (`[E028]`, Kovacevic et al., 2013).
      * **Dekonvolusi Spektral Hematuria & Bilirubin:** Memanfaatkan penurunan turunan pertama $dA/d\lambda \approx 0$ pada 470–490 nm untuk hemoglobin sehingga konsentrasi bilirubin dan eritrosit lisis terisolasi murni (`[E024]`, Amazon et al., 1981).
      * **Indeks Rasiometrik Tahan Derau:** Mengaplikasikan rasio kanal $F4/F3$ (515 nm / 480 nm) yang terbukti meredam efek fluktuasi intensitas LED dan kekeruhan matriks biologis dengan linearitas $R^2 \approx 0.98$ (`[E022]`, Tomar et al., 2026).
   3. **Sensor Kimia 3 — Potensiometri pH Nernstian:**
@@ -107,8 +109,9 @@
   +------------------------------+                                  +------------------------------+
   |    OPTIK 1: NEFELOMETRI 90°  |                                  |   OPTIK 2: MULTI-SPEKTRAL    |
   |  - Emitter Laser NIR 850 nm  |                                  |  - ams AS7341 (11-Ch CMOS)   |
-  |  - Standar ISO 7027          |                                  |  - F1 (415 nm): Soret Band   |
-  |  - Deteksi: Kristal CaOx     |                                  |  - F4/F5: Q-Bands Hemoglobin |
+  |  - Detektor BPW34 + TIA 10^7 |                                  |  - F1 (415 nm): Soret Band   |
+  |  - Standar ISO 7027 (R²=0.995)|                                 |  - Rasiometrik F4/F3 515/480 |
+  |  - Deteksi: Kristal CaOx     |                                  |  - Kinetika CaOx 37°C (R²=.97)|
   +------------------------------+                                  +------------------------------+
                  |                                                                 |
                  +--------------------------------+--------------------------------+
@@ -118,39 +121,43 @@
                                |      RUANG TERMAL TERTUTUP 37.0°C    |
                                |  - Elemen PTC Keramik 12V 10W        |
                                |  - Closed-Loop PID (NTC Termistor)   |
-                               |  - Mencegah Presipitasi Artifaktual  |
+                               |  - Simulasi In-Vivo & Batas Metastabil|
                                +--------------------------------------+
                                                   |
                                                   v
                                +--------------------------------------+
                                |      ESP32-S3 ON-DEVICE TinyML       |
                                |  - Fusi Parameter: I_scat, A, pH, T  |
-                               |  - Estimasi Skor Risiko Tiselius     |
+                               |  - Estimasi Skor Tiselius & BRI      |
                                +--------------------------------------+
 ```
 
 > 🔍 **Bank Kata Kunci Referensi (Slide 5):**
+> * **Omar, A. F., & MatJafri, M. Z. (2012):** *Development of optical instrument as turbidimeter: a comparative study*, Sensor Review 32(2): 134–141. [DOI: 10.1108/02602281211209428](https://doi.org/10.1108/02602281211209428)
+> * **Kovacevic, L., et al. (2013):** *Urinary turbidity as a marker of crystallization: Is spectrophotometric assessment useful?*, Int. Urol. Nephrol. 45: 1009–1015. [DOI: 10.1007/s11255-013-0466-3](https://doi.org/10.1007/s11255-013-0466-3)
 > * **ISO Standard:** `"ISO 7027-1:2016" "Water quality — Determination of turbidity"`
-> * **PubMed / ACS Sensors:** `"ams AS7341" urine OR hematuria "optical absorption" multi-spectral`
-> * **Optics / Mie Scattering:** `"Mie scattering" "calcium oxalate monohydrate" crystal size distribution nephelometry`
 
 ---
 
-## 6. SLIDE 6: PRIMARY SCIENTIFIC NOVELTY (RUANG TERMAL 37°C PID)
+## 6. SLIDE 6: PRIMARY SCIENTIFIC NOVELTY (RUANG TERMAL 37°C PID & DUAL-RISK FUSION)
 - **Headline:** **Pembeda Utama: Mengapa Kontrol Termal 37.0°C Mengubah Segalanya?**
-- **Bio-Termodinamika Kelarutan Urin & Kinetika Fotometri:**
-  - Urin manusia di dalam ginjal berada pada kesetimbangan metastabil terlindungi oleh inhibitor makromolekul alami (sitrat, nefrokalsin, GAGs) (`[E020]`, `[E026]`).
-  - Pendinginan sampel urin ke suhu ruang ($20\text{--}25^\circ\text{C}$) menurunkan batas metastabilitas termodinamika secara drastis. Ion $\text{Ca}^{2+}$ dan $\text{C}_2\text{O}_4^{2-}$ mengendap secara spontan di dasar tabung.
-  - Selain itu, laju kinetika reaksi fotometri dan kesetimbangan hemoglobin urin sangat bergantung pada suhu: pengujian pada 37°C mempercepat laju reaksi dan mengubah kesetimbangan optik dibanding suhu ruang 23°C (`[E025]`, Chalmers & Snell, 1993).
-  - **Dampak Klinis Tanpa Kontrol Termal:** Alat tanpa pengatur suhu akan memberikan vonis **Positif Palsu (False Positive)**: pasien divonis berisiko tinggi batu ginjal padahal kristal tersebut baru terbentuk di luar tubuh karena udara dingin ruangan ber-AC!
+- **Bio-Termodinamika Batas Metastabilitas & Kinetika Pertumbuhan:**
+  - Urin manusia berada pada kesetimbangan metastabil terlindungi oleh inhibitor makromolekul alami (sitrat, nefrokalsin, GAGs) (`[E020]`, `[E026]`).
+  - **Persamaan Batas Metastabel Empiris:** Batas metastabilitas ($ML$) kristalisasi kalsium oksalat dalam urin manusia dirumuskan oleh Kavanagh et al. (2000) `[E027]` sebagai:
+    $$ML = 1.35 \times [\text{Ca}]^{-0.81}$$
+    dengan rasio supersaturasi kritis presipitasi spontan mencapai $\approx 10$. Menjaga $[\text{Ca}] < 3\text{ mM}$ secara fisiologis mencegah pembentukan kristal spontan karena membutuhkan konsentrasi oksalat yang sangat tinggi di luar batas metabolisme normal.
+  - **Bahaya Fatal Tanpa Kontrol Suhu (20–25°C):** Pendinginan urin ke suhu ruang meruntuhkan batas metastabilitas termodinamika secara instan. Ion $\text{Ca}^{2+}$ dan $\text{C}_2\text{O}_4^{2-}$ memicu nukleasi artifaktual di dasar tabung $\rightarrow$ memicu vonis **Positif Palsu (*False Positive*)** pada alat konvensional!
+  - **Fusi Ganda Risiko Termodinamika & Kinetika:** Evaluasi 1.162 sampel urin manusia oleh Laube et al. (2016) `[E030]` membuktikan bahwa identifikasi pembentuk batu ginjal yang akurat harus menggabungkan dua parameter komplementer:
+    1. **Risiko Termodinamika (Bonn Risk Index / BRI):** Ambang rasio supersaturasi $[\text{Ca}^{2+}]/(\text{Ox}^{2-}) > 1\text{ L}^{-1}$ saat transmisi cahaya turun 2% menandai onset nukleasi.
+    2. **Risiko Kinetika (Turbidity Slope):** Kemiringan kurva atenuansi/turbiditas linear ($r \ge 0.95$, rerata $9.24\text{ W/m}^2/\text{s}$) yang menggambarkan kecepatan agregasi kristal riil setelah onset pembentukan.
 - **Solusi Enjiniring LITHOSCAN:**
   - Chamber pemanas berbahan blok aluminium anodized hitam dengan elemen pemanas keramik PTC 12V 10W.
   - Algoritma kontrol PID tertanam pada ESP32-S3 menjaga suhu cairan tepat pada **$37.0^\circ\text{C} \pm 0.3^\circ\text{C}$** selama 30 detik pembacaan optik.
 
 > 🔍 **Bank Kata Kunci Referensi (Slide 6):**
+> * **Kavanagh, J. P., et al. (2000):** *Calcium oxalate crystallization kinetics studied by oxalate-induced turbidity*, Clin. Sci. 98: 151–158. [DOI: 10.1042/cs0980151](https://doi.org/10.1042/cs0980151)
+> * **Laube, N., et al. (2016):** *Kinetics of calcium oxalate crystal formation in urine*, Urolithiasis 44: 499–506. [DOI: 10.1007/s00240-016-0900-y](https://doi.org/10.1007/s00240-016-0900-y)
 > * **Chalmers, A. H., & Snell, L. E. (1993):** *Estimation of plasma and urinary hemoglobin by a rate spectrophotometric method*, Clin. Chem. 39(8): 1679–1682. [DOI: 10.1093/clinchem/39.8.1679](https://doi.org/10.1093/clinchem/39.8.1679)
-> * **PubMed / Urolithiasis:** `"calcium oxalate solubility" temperature 37 C 25 C "metastable limit" urine crystallization`
-> * **Biophysics / ScienceDirect:** `"temperature dependence" "calcium oxalate monohydrate" nucleation growth kinetics`
 
 ---
 
@@ -177,20 +184,25 @@
 - **Headline:** **Spesifikasi Enjiniring Presisi Tinggi dalam Format Handheld Ergonomis**
 - **Spesifikasi Perangkat Keras LITHOSCAN (Parameter Teroptimasi Empiris):**
   - **Processor & Core:** ESP32-S3 Dual-Core Xtensa LX7 @ 240 MHz (512 KB SRAM, 8 MB Flash, Vector Extensions ESP-NN).
-  - **Optical Nephelometric Subsystem:** Emitter Laser Diode NIR 850 nm terkolimasi ($P = 5\text{ mW}$), Fotodioda responsif NIR sudut 90° dengan transimpedance amplifier berderau rendah (ISO 7027-1:2016 `[E019]`).
+  - **Optical Nephelometric Subsystem (ISO 7027-1:2016):**
+    - Emitter: Laser Diode NIR 850 nm terkolimasi ($P = 5\text{ mW}$) / High-Speed GaAlAs NIR LED 880 nm (`[E019]`, `[E031]`).
+    - Detektor 90°: Fotodioda silikon PIN BPW34 (area aktif $7.5\text{ mm}^2$, sudut $\pm 65^\circ$, responsivitas $0.62\text{ A/W}$ pada 850 nm) (`[E031]`, Omar & MatJafri, 2012).
+    - Front-End Analog: Transimpedance Amplifier berderau rendah dengan gain $10^7\text{ V/A}$ dan filter pasif frekuensi cut-off rendah.
+    - Resolusi & Stabilitas: Linearitas $R^2 = 0.995$ dengan standard error $1.81\text{ NTU}$ (rentang 0–100 NTU), averaging 250 pembacaan ADC untuk meredam fluktuasi sinyal hingga $\pm 2$ bit ADC pada 1 NTU (`[E031]`).
   - **Multi-Spectral Subsystem (ams AS7341):**
     - 11-kanal optik (8 pita sempit tampak 415, 445, 480, 515, 555, 590, 630, 680 nm + Clear + NIR), ADC internal 16-bit, antarmuka $I^2C$ (`[E021]`).
     - **Pengaturan Register Optimal:** `ATIME = 100`, `ASTEP = 999`, gain `64x` di bawah eksitasi LED putih berpenyebar ganda (*dual-diffuser*) (`[E022]`, Tomar et al., 2026).
     - **Tuning Kanal Mikrohematuria:** Kanal Ch1 (415 nm Soret band) disetel pada gain 128 dan arus 50 mA; Kanal Ch4 (515 nm Q-band) pada gain 16 dan arus 60 mA untuk mencegah saturasi ADC ($< 65.535$) (`[E023]`, Machado et al., 2024).
     - Jarak optik sensor ke kuvet: $10\text{ mm}$ dalam *light-shielded 3D-printed enclosure* berbahan black PLA (`[E022]`).
-  - **Thermal Actuator & Sensor:** Elemen PTC Keramik 12V 10W + NTC Thermistor 10k $\pm 0.5\%$ + MOSFET PWM closed-loop PID menjaga $37.0 \pm 0.3^\circ\text{C}$.
+  - **Thermal Actuator & Sensor:** Elemen PTC Keramik 12V 10W + NTC Thermistor 10k $\pm 0.5\%$ + MOSFET PWM closed-loop PID menjaga $37.0 \pm 0.3^\circ\text{C}$ (`[E020]`, `[E028]`).
   - **Electrochemical pH Front-End:** Miniatur glass combination electrode + AFE high-input impedance ($>10^{12}\ \Omega$) + ADS1115 16-bit ADC eksternal dengan kompensasi termal Nernst ($61.54\text{ mV/pH}$ pada 37°C) (`[E020]`).
   - **User Interface & Display:** Layar grafis OLED 2.4 inci Full-Color (SPI), 3 tombol navigasi taktil, cincin status LED cyan.
   - **Daya & Portabilitas:** Baterai Li-Ion 18650 2S (7.4V 2600 mAh), modul charging USB-C PD, konsumsi daya rata-rata 4.2W saat pemanasan aktif.
   - **Dimensi & Bahan Casing:** $16.5 \times 8.2 \times 4.2\text{ cm}$, berat 280 gram, material 3D printing resin antibakteri medical-grade.
 
 > 🔍 **Bank Kata Kunci Referensi (Slide 8):**
-> * **Machado, C. C. S., et al. (2024):** *Evaluation of the performance of 3D printed (spectro)photometers based on multi-channel color sensors*, Anal. Methods 16: 8427–8436. [DOI: 10.1039/d4ay01831a](https://doi.org/10.1039/d4ay01831a)
+> * **Omar, A. F., & MatJafri, M. Z. (2012):** *Development of optical instrument as turbidimeter*, Sensor Review 32(2): 134–141. [DOI: 10.1108/02602281211209428](https://doi.org/10.1108/02602281211209428)
+> * **Machado, C. C. S., et al. (2024):** *Evaluation of the performance of 3D printed (spectro)photometers*, Anal. Methods 16: 8427–8436. [DOI: 10.1039/d4ay01831a](https://doi.org/10.1039/d4ay01831a)
 > * **Tomar, R., et al. (2026):** *Portable Multispectral Optical Reader for Paper-Based Phosphate Detection in Saliva*, IEEE Sensors J. [DOI: 10.1109/JSEN.2026.3734592](https://doi.org/10.1109/JSEN.2026.3734592)
 
 ---
@@ -198,18 +210,24 @@
 ## 9. SLIDE 9: METODE PELAKSANAAN & VALIDASI LABORATORIUM
 - **Headline:** **Tahapan Kerja Terukur Menuju Prototipe Fungsional Siap Uji (4 Bulan)**
 - **Roadmap 4 Bulan Pelaksanaan:**
-  - **Bulan 1 (Desain Optik-Termal & Pengadaan Komponen):** Perancangan 3D chamber optik 90° blackout jarak 10 mm, skematik PCB utama ESP32-S3 + AFE ADS1115, pengadaan kuvet dan sensor.
+  - **Bulan 1 (Desain Optik-Termal & Pengadaan Komponen):** Perancangan 3D chamber optik 90° blackout jarak 10 mm, skematik PCB utama ESP32-S3 + AFE ADS1115 + amplifier BPW34, pengadaan kuvet dan sensor.
   - **Bulan 2 (Fabrikasi PCB, Perakitan & Tuning PID):** Fabrikasi PCB 4-layer ENIG gold, perakitan elemen pemanas PTC, penyetelan konstanta PID ($K_p, K_i, K_d$) termal 37.0°C.
-  - **Bulan 3 (Kalibrasi Spektral & Pelatihan Model TinyML):** Kalibrasi nefelometri terhadap larutan standar Formazin ISO 7027 (0–100 NTU), kalibrasi hemoglobin AS7341 pada 415 nm & rasiometrik F4/F3 (515/480 nm), pelatihan model TinyML Tiselius pada 500 sampel urin sintetis bertingkat.
+  - **Bulan 3 (Kalibrasi Spektral & Pelatihan Model TinyML):** 
+    - Kalibrasi nefelometri terhadap larutan standar Formazin ISO 7027 (0–100 NTU) (`[E019]`, `[E031]`).
+    - Kalibrasi kinetika kristalisasi CaOx monohidrat pada urin sintetis Griffith (pH 5.7, 37°C) (`[E028]`, Kovacevic et al., 2013).
+    - Kalibrasi hemoglobin AS7341 pada 415 nm & rasiometrik F4/F3 (515/480 nm) (`[E021]`, `[E022]`).
+    - Pelatihan model TinyML Tiselius & BRI pada 500 sampel urin sintetis bertingkat $[Ca] \times [Ox]$ berdasarkan kurva metastabilitas $ML = 1.35 \times [Ca]^{-0.81}$ (`[E027]`, `[E029]`, `[E030]`).
   - **Bulan 4 (Validasi Reprodusibilitas & Tri-Validation Protocol):** Uji komparasi terhadap Spektrofotometer UV-Vis laboratorium kampus, uji Passing-Bablok dan Bland-Altman (`[E021]`), uji Coefficient of Variation ($CV < 1\%$), penulisan laporan dan draf paten.
 - **Kriteria Keberhasilan Kuantitatif Berbasis Literatur:**
   - ✅ **Akurasi Suhu Chamber:** $37.0^\circ\text{C} \pm 0.3^\circ\text{C}$ tercapai dalam waktu $\le 60\text{ detik}$.
-  - ✅ **Linearitas Turbiditas 850 nm:** Koefisien determinasi $R^2 \ge 0.98$ terhadap larutan standar formazin ISO 7027.
+  - ✅ **Linearitas Turbiditas 850 nm:** Koefisien determinasi $R^2 \ge 0.99$ terhadap larutan standar formazin ISO 7027 dengan standar error $< 2\text{ NTU}$ (`[E031]`).
+  - ✅ **Linearitas Kinetika CaOx 37°C:** $R^2 \ge 0.97$ pada pengujian turbiditas kristalisasi urin sintetis (`[E028]`).
   - ✅ **Batas Deteksi Mikrohematuria:** Mampu mendeteksi konsentrasi hemoglobin hingga $\le 3\text{ mg/L}$ ($0.003\text{ g/L}$, setara 5–10 eritrosit/$\mu\text{L}$), bebas gangguan askorbat dan bilirubin hingga 500 µmol/L (`[E025]`, Chalmers & Snell, 1993).
   - ✅ **Linearitas Rasiometrik Spektral:** $R^2 \ge 0.98$ pada rasio F4/F3 dan $R^2 = 0.9998$ pada kanal serapan 515 nm (`[E021]`, `[E022]`).
-  - ✅ **Akurasi Model TinyML:** Akurasi klasifikasi risiko litogenik Tiselius $\ge 95\%$ dengan waktu inferensi on-device $<10\text{ milidetik}$.
+  - ✅ **Akurasi Model TinyML:** Akurasi klasifikasi risiko litogenik Tiselius & BRI $\ge 95\%$ dengan waktu inferensi on-device $<10\text{ milidetik}$ (`[E018]`, `[E030]`).
 
 > 🔍 **Bank Kata Kunci Referensi (Slide 9):**
+> * **Kovacevic, L., et al. (2013):** *Urinary turbidity as a marker of crystallization: Is spectrophotometric assessment useful?*, Int. Urol. Nephrol. [DOI: 10.1007/s11255-013-0466-3](https://doi.org/10.1007/s11255-013-0466-3)
 > * **Analytical Chemistry:** `"formazin turbidity standard" calibration ISO 7027 linearity`
 > * **Urolithiasis Research:** `"artificial urine" recipe calcium oxalate crystallization kinetics protocol`
 
@@ -219,7 +237,7 @@
 - **Headline:** **Efisiensi Anggaran Maksimal: Dua Prototipe Identik Sesuai Pagu Belmawa**
 - **Total Pengajuan Dana:** **Rp 7.850.000** (Dana Maksimal Belmawa) + **Rp 1.500.000** (Dana Pendamping PT) = **Rp 9.350.000**
 - **Distribusi Pos Biaya (100% Sesuai Pedoman Belmawa):**
-  1. **Bahan Khusus (59,55% / Rp 4.675.000):** Pengadaan komponen untuk **2 Unit Prototipe Identik (Field Unit & Lab Station)** + 100 pcs Kuvet Polistiren Disposabel (2x ESP32-S3, 2x ams AS7341, 2x Laser 850nm, 2x Fotodioda NIR, 2x PTC Heater, 2x Sensor pH & ADS1115, 2x Baterai Li-Ion 2S, filamen resin 3D biocompatible).
+  1. **Bahan Khusus (59,55% / Rp 4.675.000):** Pengadaan komponen untuk **2 Unit Prototipe Identik (Field Unit & Lab Station)** + 100 pcs Kuvet Polistiren Disposabel (2x ESP32-S3, 2x ams AS7341, 2x Laser 850nm, 2x Fotodioda BPW34, 2x PTC Heater, 2x Sensor pH & ADS1115, 2x Baterai Li-Ion 2S, filamen resin 3D biocompatible).
   2. **Sewa dan Jasa (14,65% / Rp 1.150.000):** Jasa cetak PCB 4-Layer ENIG Gold JLCPCB/PCBWay, sewa spektrofotometer UV-Vis lab biokimia kampus untuk uji validasi emas.
   3. **Transportasi Lokal (13,38% / Rp 1.050.000):** Pengadaan bahan kimia sintetis lokal dan observasi klinik urologi/laboratorium patologi klinik.
   4. **Lain-lain (12,42% / Rp 975.000):** Biaya pendaftaran Hak Cipta (HKI) algoritma firmware, biaya pendaftaran seminar nasional luaran ilmiah, materai & administrasi.
@@ -295,9 +313,34 @@ Setiap klaim ilmiah dan parameter instrumentasi LITHOSCAN berakar pada artikel i
    **Pediatric Nephrology**, 10(4), 435–437.  
    DOI: [10.1007/s004670050133](https://doi.org/10.1007/s004670050133) `[E026]`
 
-7. **International Organization for Standardization (ISO). (2016).**  
-   *ISO 7027-1:2016: Water quality — Determination of turbidity — Part 1: Quantitative methods.*  
-   Geneva: ISO Standard. `[E019]`
+7. **Omar, A. F., & MatJafri, M. Z. (2012).**  
+   *Development of optical instrument as turbidimeter: a comparative study.*  
+   **Sensor Review**, 32(2), 134–141.  
+   DOI: [10.1108/02602281211209428](https://doi.org/10.1108/02602281211209428) `[E031]`
+
+8. **Kovacevic, L., Lu, H., & Lakshmanan, Y. (2013).**  
+   *Urinary turbidity as a marker of crystallization: Is spectrophotometric assessment useful?*  
+   **International Urology and Nephrology**, 45(4), 1009–1015.  
+   DOI: [10.1007/s11255-013-0466-3](https://doi.org/10.1007/s11255-013-0466-3) `[E028]`
+
+9. **Kavanagh, J. P., Jones, L., & Rao, P. N. (2000).**  
+   *Calcium oxalate crystallization kinetics studied by oxalate-induced turbidity in fresh human urine and artificial urine.*  
+   **Clinical Science**, 98(2), 151–158.  
+   DOI: [10.1042/cs0980151](https://doi.org/10.1042/cs0980151) `[E027]`
+
+10. **Laube, N., Klein, F., & Bernsmann, F. (2016).**  
+    *Kinetics of calcium oxalate crystal formation in urine.*  
+    **Urolithiasis**, 44(6), 499–506.  
+    DOI: [10.1007/s00240-016-0900-y](https://doi.org/10.1007/s00240-016-0900-y) `[E030]`
+
+11. **Kohri, K., Kodama, M., Ishikawa, Y., Katayama, Y., Kataoka, K., Iguchi, M., Yachiku, S., & Kurita, T. (1991).**  
+    *Simple tests to determine urinary risk factors and calcium oxalate crystallization in the outpatient clinic.*  
+    **The Journal of Urology**, 146(1), 108–112.  
+    DOI: [10.1016/s0022-5347(17)37725-7](https://doi.org/10.1016/s0022-5347(17)37725-7) `[E029]`
+
+12. **International Organization for Standardization (ISO). (2016).**  
+    *ISO 7027-1:2016: Water quality — Determination of turbidity — Part 1: Quantitative methods.*  
+    Geneva: ISO Standard. `[E019]`
 
 ---
 

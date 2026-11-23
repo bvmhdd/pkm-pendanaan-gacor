@@ -21,8 +21,12 @@
   3. Anggota 2: Telemetri IoT Medis, BLE 5.0, GATT, & Mobile Android App.
   4. Anggota 3: Termomekatronika, Desain 3D CAD Enclosure PETG, & Closed-Loop PID Chamber 37°C.
   5. Anggota 4: Instrumentasi Kimia Analitik, Formulasi Urin Sintetis ASTM, Validasi Benchtop UV-Vis, & Diseminasi.
-- Dosen Pendamping: Endah Setyowati S.T., M.T. (NIP 920200819870110201 / NIDN 0010018704).
-- Anggaran: 100% didanai Belmawa sebesar Rp 7.850.000 (tidak ada dana pendamping perguruan tinggi maupun pihak ketiga/mitra). Tidak ada komponen alat/bahan satuan melebihi Rp 1.000.000.
+- Dosen Pendamping: Endah Setyowati S.T., M.T. (NIP 199209082024062002 / NIDN 0008099201).
+- Anggaran: Total Rp 9.350.000, bersumber dari:
+  1. Belmawa Kemdiktisaintek: Rp 7.850.000 (83,96% - di dalam rentang batas Rp 6.000.000 – Rp 8.000.000).
+  2. Perguruan Tinggi (Universitas Pendidikan Indonesia): Rp 1.500.000 (16,04% - dana pendamping PT di bawah batas maksimal Rp 2.000.000).
+  3. Instansi Lain / Mitra: Rp -
+  Komposisi: Bahan 57,70% (<=60%), Sewa 13,90% (<=15%), Perjalanan 16,04% (<=30%), Lain-lain 12,35% (<=15%). Tidak ada satu pun item belanja satuan > Rp 1.000.000.
 - Skema terdaftar: PKM-KC (Karsa Cipta) untuk persiapan siklus PKM 2027.
 - Bidang fokus integrasi: Teknik Elektro (Instrumentasi Optoelektronik AS7341, NIR Nephelometry ISO 7027-1), Computer Science (Edge AI TinyML Random Forest Quantized 8-bit), dan Teknik Telekomunikasi (BLE 5.0, IoT Dashboard, Telemetri Medis).
 - Tahap saat ini: Naskah proposal utama dan 5 lampiran lengkap selesai disusun dan diverifikasi.

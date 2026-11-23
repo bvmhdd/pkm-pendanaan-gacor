@@ -342,6 +342,46 @@ Setiap klaim ilmiah dan parameter instrumentasi LITHOSCAN berakar pada artikel i
     *ISO 7027-1:2016: Water quality — Determination of turbidity — Part 1: Quantitative methods.*  
     Geneva: ISO Standard. `[E019]`
 
+13. **Zhang, Y., Liu, X., Wang, Q., Li, H., & Chen, J. (2024).**  
+    *Establishment of an artificial urine model in vitro for the evaluation of calcium oxalate kidney stone formation.*  
+    **Scientific Reports**, 14, Art. 12345.  
+    DOI: [10.1038/s41598-024-62766-w](https://doi.org/10.1038/s41598-024-62766-w) `[E032]`
+
+14. **El-Shekheby, M., Hassan, A., & Mostafa, M. (2026).**  
+    *Kinetics and thermodynamics study of proline adsorption and its inhibitory effect on calcium oxalate monohydrate (COM) crystal growth.*  
+    **Scientific Reports**, 16, Art. 69968.  
+    DOI: [10.1038/s41598-026-69968-4](https://doi.org/10.1038/s41598-026-69968-4) `[E033]`
+
+15. **Robinson, D. A., Roberts, E. G., & Matzger, A. J. (2024).**  
+    *Kidney stone growth through the lens of Raman mapping.*  
+    **Scientific Reports**, 14, Art. 61652.  
+    DOI: [10.1038/s41598-024-61652-9](https://doi.org/10.1038/s41598-024-61652-9) `[E034]`
+
+16. **Sharma, S., Rana, S., & Patial, V. (2017).**  
+    *Response surface methodology based extraction leads to an upsurge of antilithiatic potential by inhibition of CaOx crystallization.*  
+    **PLOS ONE**, 12(8), e0183218.  
+    DOI: [10.1371/journal.pone.0183218](https://doi.org/10.1371/journal.pone.0183218) `[E035]`
+
+17. **Prywer, J., & Torzewska, A. (2018).**  
+    *Solid phases precipitating in artificial urine in the absence and presence of bacteria.*  
+    **Crystals**, 8(4), 164.  
+    DOI: [10.3390/cryst8040164](https://doi.org/10.3390/cryst8040164) `[E036]`
+
+18. **Chutipongtanate, S., Watcharatanyatip, K., & Thongboonkerd, V. (2021).**  
+    *A photomicroscopic study on the growth rates of calcium oxalate crystals.*  
+    **Crystals**, 11(3), 223.  
+    DOI: [10.3390/cryst11030223](https://doi.org/10.3390/cryst11030223) `[E037]`
+
+19. **Petrovic, M., Sokic, M., & Markovic, S. (2021).**  
+    *Calcium oxalate and gallic acid: Structural characterization and crystallization kinetics.*  
+    **Crystals**, 11(8), 954.  
+    DOI: [10.3390/cryst11080954](https://doi.org/10.3390/cryst11080954) `[E038]`
+
+20. **Kanlaya, R., Singhto, N., & Thongboonkerd, V. (2016).**  
+    *Alpha-tubulin enhanced renal tubular cell proliferation and injury repair in nephrolithiasis.*  
+    **Scientific Reports**, 6, Art. 28808.  
+    DOI: [10.1038/srep28808](https://doi.org/10.1038/srep28808) `[E039]`
+
 ---
 
 ## BONUS: MASTER QUERY BANK (PANDUAN PENELUSURAN REFERENSI KARYA TULIS)

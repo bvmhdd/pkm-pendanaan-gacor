@@ -382,6 +382,37 @@ Setiap klaim ilmiah dan parameter instrumentasi LITHOSCAN berakar pada artikel i
     **Scientific Reports**, 6, Art. 28808.  
     DOI: [10.1038/srep28808](https://doi.org/10.1038/srep28808) `[E039]`
 
+21. **Bankir, L., & Daudon, M. (2026).**  
+    *Poor compliance of recurrent stone formers to increase their fluid intake in spite of repeated recommendations.*  
+    **Clinical Kidney Journal**, 19(2), sfag051.  
+    DOI: [10.1093/ckj/sfag051](https://doi.org/10.1093/ckj/sfag051) `[E040]`
+
+22. **Porowski, T., Kirejczyk, J. K., Zoch-Zwierz, W., Konstantynowicz, J., Korzeniecka-Kozerska, A., & Laube, N. (2010).**  
+    *A new approach to investigate the circadian rhythm of calcium oxalate crystallization risk in children with urolithiasis: morning spot urine versus 24-hour urine.*  
+    **The Journal of Urology**, 184(5), 2119–2124.  
+    DOI: [10.1016/j.juro.2010.06.134](https://doi.org/10.1016/j.juro.2010.06.134) `[E041]`
+
+23. **Bagińska-Chyży, J., Kirejczyk, J. K., Porowski, T., Wagner, C. A., & Korzeniecka-Kozerska, A. (2025).**  
+    *The impact of urine pH on lithogenic risk profile in children with urolithiasis.*  
+    **Pediatric Nephrology**, 40(3), 807–817.  
+    DOI: [10.1007/s00467-025-07044-1](https://doi.org/10.1007/s00467-025-07044-1) `[E042]`
+
+24. **Silverio, A. A., Chung, W. Y., Cheng, C., Wang, H. L., Kung, C. M., Chen, J., & Tsai, V. F. (2015).**  
+    *Point-of-care electrical conductivity measurement in spot morning urine for lithogenic risk and calcium oxalate sedimentation prediction.*  
+    **Urolithiasis**, 43(6), 521–528.  
+    DOI: [10.1007/s00240-015-0812-2](https://doi.org/10.1007/s00240-015-0812-2) `[E043]`
+
+25. **Robert, M., Roux, J. O., Boularan, A. M., Bourelly, F., Monnier, L., & Grasset, D. (1995).**  
+    *Evaluation of a simplified Tiselius crystallisation risk index for calcium oxalate stones.*  
+    **Urologia Internationalis**, 55(3), 136–140.  
+    DOI: [10.1159/000282765](https://doi.org/10.1159/000282765) `[E044]`
+
+26. **Robertson, W. G. (2021).**  
+    *LITHOSCREEN: a comprehensive screening program and database for the metabolic evaluation of patients with calcium stone disease—the “stone clinic effect”.*  
+    **Urolithiasis**, 49(6), 489–502.  
+    DOI: [10.1007/s00240-021-01284-8](https://doi.org/10.1007/s00240-021-01284-8) `[E045]`
+
+
 ---
 
 ## BONUS: MASTER QUERY BANK (PANDUAN PENELUSURAN REFERENSI KARYA TULIS)
